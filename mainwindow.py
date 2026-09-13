@@ -15,50 +15,73 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.character_stats = {}
+        self.character_stats["Maximum health"] = -1
+        self.character_stats["Current health"] = 0
 
         #Set buttons functionality onClick
         self.ui.export_sheet_button.clicked.connect(self.save_stats_to_file)
         self.ui.import_sheet_button.clicked.connect(self.load_stats_from_file)
         self.ui.calculate_stats_button.clicked.connect(self.calculate_character_stats)
+        self.ui.increment_health_button.clicked.connect(self.increment_health)
+        self.ui.decrement_health_button.clicked.connect(self.decrement_health)
+
 
     #Block of functions to determine player stats without
     #needing manual calculation, for convenience
     def determine_intrigue_defense(self):
         #Awareness + Cunning + Status
-        awareness_value = int(self.ui.awareness_rating_text.toPlainText());
-        cunning_value = int(self.ui.cunning_rating_text.toPlainText());
-        status_value = int(self.ui.status_rating_text.toPlainText());
-        intrigue_defense = awareness_value + cunning_value + status_value;
-        self.ui.intrigue_defense_value_text.setText(str(intrigue_defense));
+        awareness_value = int(self.ui.awareness_rating_text.toPlainText())
+        cunning_value = int(self.ui.cunning_rating_text.toPlainText())
+        status_value = int(self.ui.status_rating_text.toPlainText())
+        intrigue_defense = awareness_value + cunning_value + status_value
+        self.ui.intrigue_defense_value_text.setText(str(intrigue_defense))
 
     def determine_maximum_health(self):
         #Endurance * 3
-        endurance_value = int(self.ui.endurance_rating_text.toPlainText());
-        max_health_value = endurance_value * 3;
-        self.ui.max_health_value_text.setText(str(max_health_value));
+        endurance_value = int(self.ui.endurance_rating_text.toPlainText())
+        max_health_value = endurance_value * 3
+        self.character_stats["Maximum health"] = max_health_value
 
     def determine_combat_defense(self):
         #Agility + Athletics + Awareness + Defense Bonus - Armor Penalty
-        agility_value = int(self.ui.agility_rating_text.toPlainText());
-        athletics_value = int(self.ui.athletics_rating_text.toPlainText());
-        awareness_value = int(self.ui.awareness_rating_text.toPlainText());
-        defense_value = int(self.ui.armor_rating_final_value.text());
-        armor_penalty_value = int(self.ui.armor_penalty_final_value.text());
+        agility_value = int(self.ui.agility_rating_text.toPlainText())
+        athletics_value = int(self.ui.athletics_rating_text.toPlainText())
+        awareness_value = int(self.ui.awareness_rating_text.toPlainText())
+        defense_value = int(self.ui.armor_rating_final_value.text())
+        armor_penalty_value = int(self.ui.armor_penalty_final_value.text())
 
-        combat_defense = agility_value + athletics_value + awareness_value + defense_value - armor_penalty_value;
-        self.ui.combat_defense_value_text.setText(str(combat_defense));
+        combat_defense = agility_value + athletics_value + awareness_value + defense_value - armor_penalty_value
+        self.ui.combat_defense_value_text.setText(str(combat_defense))
 
     def determine_composure(self):
         #Will * 3
-        will_value = int(self.ui.will_rating_text.toPlainText());
-        composure_value = will_value * 3;
-        self.ui.composure_value_text.setText(str(composure_value));
+        will_value = int(self.ui.will_rating_text.toPlainText())
+        composure_value = will_value * 3
+        self.ui.composure_value_text.setText(str(composure_value))
 
     def calculate_character_stats(self):
         self.determine_maximum_health()
         self.determine_intrigue_defense()
         self.determine_combat_defense()
         self.determine_composure()
+        self.initialise_health()
+
+    def update_health_text(self):
+        self.ui.max_health_value_text.setText(str(self.character_stats["Current health"]) + " / " + str(self.character_stats["Maximum health"]))
+
+    #Simple add/remove health functions
+    #to be used for their respective buttons
+    def increment_health(self):
+        self.character_stats["Current health"] += 1
+        self.update_health_text()
+
+    def decrement_health(self):
+        self.character_stats["Current health"] -= 1
+        self.update_health_text()
+
+    def initialise_health(self):
+        self.character_stats["Current health"] = self.character_stats["Maximum health"]
+        self.update_health_text()
 
     def update_stats_from_ui(self):
         self.character_stats["agility"] = int(self.ui.agility_rating_text.toPlainText());
@@ -99,7 +122,10 @@ class MainWindow(QMainWindow):
         self.ui.thievery_rating_text.setPlainText(str(self.character_stats["thievery"]))
         self.ui.warfare_rating_text.setPlainText(str(self.character_stats["warfare"]))
         self.ui.will_rating_text.setPlainText(str(self.character_stats["will"]))
+        self.update_health_text()
 
+
+    #Saving and loading functions
     def save_stats_to_file(self):
         self.update_stats_from_ui();
 

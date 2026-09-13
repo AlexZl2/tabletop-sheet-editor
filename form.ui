@@ -4027,6 +4027,44 @@ SHEET</string>
      <string>CALCULATE STATS</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="increment_health_button">
+    <property name="geometry">
+     <rect>
+      <x>1210</x>
+      <y>720</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>INCREMENT HEALTH</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="decrement_health_button">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>720</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>DECREMENT HEALTH</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -981,6 +981,14 @@ class Ui_MainWindow(object):
         self.calculate_stats_button.setObjectName(u"calculate_stats_button")
         self.calculate_stats_button.setGeometry(QRect(1020, 780, 181, 51))
         self.calculate_stats_button.setFont(font)
+        self.increment_health_button = QPushButton(self.centralwidget)
+        self.increment_health_button.setObjectName(u"increment_health_button")
+        self.increment_health_button.setGeometry(QRect(1210, 720, 181, 51))
+        self.increment_health_button.setFont(font)
+        self.decrement_health_button = QPushButton(self.centralwidget)
+        self.decrement_health_button.setObjectName(u"decrement_health_button")
+        self.decrement_health_button.setGeometry(QRect(1020, 720, 181, 51))
+        self.decrement_health_button.setFont(font)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -1239,6 +1247,8 @@ class Ui_MainWindow(object):
         self.export_sheet_button.setText(QCoreApplication.translate("MainWindow", u"EXPORT CHARACTER\n"
 "SHEET", None))
         self.calculate_stats_button.setText(QCoreApplication.translate("MainWindow", u"CALCULATE STATS", None))
+        self.increment_health_button.setText(QCoreApplication.translate("MainWindow", u"INCREMENT HEALTH", None))
+        self.decrement_health_button.setText(QCoreApplication.translate("MainWindow", u"DECREMENT HEALTH", None))
         self.menuASOIAF_Character_Sheet_Editor.setTitle(QCoreApplication.translate("MainWindow", u"ASOIAF Character Sheet Editor", None))
     # retranslateUi
 
