@@ -2620,7 +2620,7 @@
      <number>2</number>
     </property>
     <property name="text">
-     <string>VALUE</string>
+     <string>0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2648,7 +2648,7 @@
      <number>2</number>
     </property>
     <property name="text">
-     <string>VALUE</string>
+     <string>0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -2748,7 +2748,7 @@
      <number>2</number>
     </property>
     <property name="text">
-     <string>VALUE</string>
+     <string>0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -3361,7 +3361,7 @@
      <number>2</number>
     </property>
     <property name="text">
-     <string>VALUE</string>
+     <string>0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -3411,7 +3411,7 @@
      <number>2</number>
     </property>
     <property name="text">
-     <string>VALUE</string>
+     <string>0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -4006,6 +4006,25 @@ SHEET</string>
     <property name="text">
      <string>EXPORT CHARACTER
 SHEET</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="calculate_stats_button">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>780</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>CALCULATE STATS</string>
     </property>
    </widget>
   </widget>
